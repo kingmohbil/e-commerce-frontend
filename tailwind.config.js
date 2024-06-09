@@ -12,6 +12,7 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-geist-mono)"],
+        poppins: ["var(--font-poppins)"]
       },
     },
   },
