@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button, Input } from '@nextui-org/react';
 import Link from 'next/link';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 import Typography from '@/components/Typography';
 import PasswordInput from '@/components/Inputs/PasswordInput';
@@ -15,6 +16,7 @@ const SignInForm: React.FC<SignInFormProps> = ({}) => {
   const [password, setPassword] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
+  const router = useRouter();
 
   const login = async () => {
     try {
@@ -23,17 +25,23 @@ const SignInForm: React.FC<SignInFormProps> = ({}) => {
         password,
       });
 
-      const access_token = res.data.access_token;
-      const refresh_token = res.data.refresh_token;
+      const access_token = res.data.accessToken;
+      const refresh_token = res.data.refreshToken;
 
       localStorage.setItem('access_token', access_token);
       localStorage.setItem('refresh_token', refresh_token);
 
       setEmailError('');
       setPasswordError('');
-    } catch (error) {
-      setEmailError('Email is incorrect');
-      setPasswordError('Password is incorrect');
+
+      router.push('/');
+    } catch (error: any) {
+      if (error.response.status === 400) setPasswordError(error.response.data.errors.password);
+
+      if (error.response.status === 404) setEmailError(error.response.data.error[0].message);
+
+      if (password === '') setPasswordError('Password must not be empty');
+      if (email === '') setEmailError('Email must not be empty');
     }
   };
 
@@ -54,6 +62,7 @@ const SignInForm: React.FC<SignInFormProps> = ({}) => {
       <PasswordInput
         errorMessage={passwordError}
         isInvalid={!!passwordError}
+        placeholder='Enter your password'
         size="lg"
         value={password}
         variant="bordered"
