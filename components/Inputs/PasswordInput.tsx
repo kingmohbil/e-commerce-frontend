@@ -24,7 +24,6 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ ...props }) => {
             )}
           </button>
         }
-        placeholder="Enter your password"
         type={isVisible ? 'text' : 'password'}
         {...props}
       />
