@@ -12,6 +12,7 @@ import FormSection from '@/components/Forms/FormSection';
 export interface SignInFormProps {}
 
 const SignInForm: React.FC<SignInFormProps> = ({}) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
@@ -19,6 +20,7 @@ const SignInForm: React.FC<SignInFormProps> = ({}) => {
   const router = useRouter();
 
   const login = async () => {
+    setIsLoading(true);
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/auth/login`, {
         email,
@@ -33,15 +35,16 @@ const SignInForm: React.FC<SignInFormProps> = ({}) => {
 
       setEmailError('');
       setPasswordError('');
+      setIsLoading(false);
 
       router.push('/');
     } catch (error: any) {
-      if (error.response.status === 400) setPasswordError(error.response.data.errors.password);
-
-      if (error.response.status === 404) setEmailError(error.response.data.error[0].message);
+      setPasswordError(error.response.data.errors?.password);
+      setEmailError(error.response.data.error?.issues[0]?.message);
 
       if (password === '') setPasswordError('Password must not be empty');
       if (email === '') setEmailError('Email must not be empty');
+      setIsLoading(false);
     }
   };
 
@@ -62,13 +65,20 @@ const SignInForm: React.FC<SignInFormProps> = ({}) => {
       <PasswordInput
         errorMessage={passwordError}
         isInvalid={!!passwordError}
-        placeholder='Enter your password'
+        placeholder="Enter your password"
         size="lg"
         value={password}
         variant="bordered"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Button fullWidth className="mt-3" color="primary" variant="solid" onClick={login}>
+      <Button
+        fullWidth
+        className="mt-3"
+        color="primary"
+        isLoading={isLoading}
+        variant="solid"
+        onClick={login}
+      >
         Sign In
       </Button>
       <span className="text-sm w-full">
