@@ -1,21 +1,23 @@
-import {nextui} from '@nextui-org/theme'
+import { nextui } from '@nextui-org/theme';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
+
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        mono: ["var(--font-geist-mono)"],
-        poppins: ["var(--font-poppins)"]
+        sans: ['var(--font-sans)'],
+        mono: ['var(--font-geist-mono)'],
+        poppins: ['var(--font-poppins)'],
       },
     },
   },
-  darkMode: "class",
+  darkMode: 'selector',
+
   plugins: [nextui()],
-}
+};
