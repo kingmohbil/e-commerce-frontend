@@ -1,14 +1,14 @@
 'use client';
+import React, { ComponentProps } from 'react';
 import { Card } from '@nextui-org/react';
-import React from 'react';
 
-export interface FormSectionProps {
+export interface FormSectionProps extends ComponentProps<'form'> {
   children: React.ReactNode;
 }
 
-const FormSection: React.FC<FormSectionProps> = ({ children }) => {
+const FormSection: React.FC<FormSectionProps> = ({ children, ...props }) => {
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form {...props}>
       <Card className="w-96 flex items-center p-10 pb-16 gap-5">{children}</Card>
     </form>
   );
