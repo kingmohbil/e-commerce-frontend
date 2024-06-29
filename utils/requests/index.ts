@@ -1,5 +1,4 @@
-import request from './axios';
+import requests from './axios';
 
-export { request };
-
-export default { request };
+export * from './axios';
+export default { requests };

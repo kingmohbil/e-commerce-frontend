@@ -1,0 +1,3 @@
+const titles = {
+  welcomeBanner: 'Welcome',
+};
