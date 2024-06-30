@@ -1,16 +1,18 @@
 import React from 'react';
 import { Metadata } from 'next';
 
-import SignUpForm from './components/SignUpForm';
+import Form from './components/Form';
+
+import messages from '@/config/languages/en';
 
 export const metadata: Metadata = {
-  title: 'Sign Up',
+  title: messages.signupForm.title,
 };
 
 const page = () => {
   return (
     <div className="h-svh flex justify-center items-center">
-      <SignUpForm />
+      <Form />
     </div>
   );
 };

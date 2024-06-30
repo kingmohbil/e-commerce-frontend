@@ -14,7 +14,6 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ ...props }) => {
   return (
     <>
       <Input
-        className="max-w-xs"
         endContent={
           <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
             {isVisible ? (

@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import { redirect } from 'next/navigation';
 
-import { pubRequest } from '@/utils';
+import { pubRequest, formDataIntoObject } from '@/utils';
 import { flattenError } from '@/validation/handlers/flattenErrors';
 import loginSchema from '@/validation/auth/loginSchema';
 
@@ -17,10 +17,7 @@ const cookieOptions: Partial<ResponseCookie> = {
 
 const login = async (prevState: any, data: FormData) => {
   try {
-    const validation = await loginSchema.safeParseAsync({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const validation = await loginSchema.safeParseAsync(formDataIntoObject(data));
 
     if (!validation.success)
       return {
