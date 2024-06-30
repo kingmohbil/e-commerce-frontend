@@ -16,6 +16,8 @@ const cookieOptions: Partial<ResponseCookie> = {
 };
 
 const login = async (prevState: any, data: FormData) => {
+  let shouldRedirect = false;
+
   try {
     const validation = await loginSchema.safeParseAsync(formDataIntoObject(data));
 
@@ -47,8 +49,9 @@ const login = async (prevState: any, data: FormData) => {
       ...cookieOptions,
     });
 
-    redirect('/');
+    shouldRedirect = true;
   } catch (error: any) {
+    console.error(error);
     if (error instanceof AxiosError)
       return {
         success: false,
@@ -59,6 +62,8 @@ const login = async (prevState: any, data: FormData) => {
       success: false,
     };
   }
+
+  shouldRedirect && redirect('/');
 };
 
 export { login };

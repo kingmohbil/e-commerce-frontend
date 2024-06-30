@@ -7,6 +7,8 @@ import { flattenError } from '@/validation/handlers/flattenErrors';
 import signupSchema from '@/validation/auth/signupSchema';
 
 const signup = async (prevState: any, data: FormData) => {
+  let shouldRedirect = false;
+
   try {
     const validation = await signupSchema.safeParseAsync(formDataIntoObject(data));
 
@@ -15,8 +17,6 @@ const signup = async (prevState: any, data: FormData) => {
         errors: flattenError(validation.error),
       };
     await pubRequest.post('/auth/signup', validation.data);
-
-    redirect('/');
   } catch (error: any) {
     if (error instanceof AxiosError) return { success: false, errors: error.response?.data.errors };
 
@@ -26,6 +26,8 @@ const signup = async (prevState: any, data: FormData) => {
       success: false,
     };
   }
+
+  shouldRedirect && redirect('/');
 };
 
 export { signup };
