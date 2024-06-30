@@ -15,4 +15,5 @@ export interface ProductType {
   metadata: MetaData[];
   totalStock: number;
   imageURL: string;
+  defaultPrice: number;
 }

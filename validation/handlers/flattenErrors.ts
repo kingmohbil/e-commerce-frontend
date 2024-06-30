@@ -1,14 +1,12 @@
-import { z } from 'zod';
+import { z, ZodError } from 'zod';
 
-export const flattenErrors = (e: z.ZodError) => {
-  let errors: any = {};
-  const flattenedErrors: any = e.flatten();
+export type FlattenErrorType = (error: ZodError) => Record<string, string>;
 
-  Object.keys(flattenedErrors.fieldErrors).forEach((key) => {
-    if (flattenedErrors.fieldErrors[key] && Array.isArray(flattenedErrors.fieldErrors[key])) {
-      errors[key] = flattenedErrors.fieldErrors[key][0];
-    }
-  });
-  
+export const flattenError: FlattenErrorType = (error) => {
+  const errors: Record<string, string> = {};
+  const fieldErrors = error.flatten().fieldErrors as any;
+
+  Object.keys(fieldErrors).forEach((key) => (errors[key] = fieldErrors[key][0]));
+
   return errors;
 };

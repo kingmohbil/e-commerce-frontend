@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 import Typography from '@/components/Typography';
-import PasswordInput from '@/components/Inputs/PasswordInput';
+import PasswordInput from '@/components/inputs/PasswordInput';
 
 export interface ErrorMessagesType {
   firstName?: string;
@@ -33,7 +33,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
   const [errorMessages, setErrorMessages] = useState<ErrorMessagesType>({});
 
   const signup = async (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     setIsLoading(true);
     try {
       if (confirmPassword === password) {
@@ -130,7 +130,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
           className="mt-3"
           color="primary"
           isLoading={isLoading}
-          type='submit'
+          type="submit"
           variant="solid"
         >
           Sign Up
