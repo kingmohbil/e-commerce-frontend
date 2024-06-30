@@ -1,31 +1,52 @@
 'use client';
-import React, { FC } from 'react';
-import { Card, CardProps, CardHeader, CardBody, Image, ImageProps } from '@nextui-org/react';
+import React, { ComponentProps, FC } from 'react';
+import { Card, CardProps, CardFooter, CardBody, CardFooterProps } from '@nextui-org/react';
 import clsx from 'clsx';
+import Link from 'next/link';
 
+import { AnimatedImage, AnimatedImageProps } from '@/components';
 import { ProductType } from '@/types/product';
 
 export interface ProductCardProps extends CardProps {
   product: ProductType;
-  imageProps?: Partial<ImageProps>;
+  imageProps?: Partial<AnimatedImageProps>;
+  imageContainerProps?: ComponentProps<'div'>;
+  action?: React.ReactNode;
+  cardFooterProps?: CardFooterProps;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ product, imageProps, ...props }) => {
+const ProductCard: FC<ProductCardProps> = ({
+  product,
+  imageContainerProps,
+  imageProps,
+  cardFooterProps,
+  action,
+  ...props
+}) => {
   return (
-    <Card {...props} className={clsx('py-4', props.className)}>
-      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <p className="text-tiny uppercase font-bold">{product.name}</p>
-      </CardHeader>
-      <CardBody className="overflow-visible w-full py-2">
-        <Image
-          isZoomed
-          alt={`${product.name} image`}
-          className="rounded-xl object-cover w-full"
-          fallbackSrc={'https://nextui.org/images/hero-card-complete.jpeg'}
-          src={'https://nextui.org/images/hero-card-complete.jpeg'}
-          {...imageProps}
-        />
+    <Card
+      radius="none"
+      {...props}
+      className={clsx('pb-4 min-w-72 rounded-b-lg select-none', props.className)}
+    >
+      <div {...imageContainerProps} className={clsx('h-40', imageContainerProps?.className)}>
+        <AnimatedImage fill alt={product.name} src={product.imageURL} {...imageProps} />
+      </div>
+      <CardBody>
+        <Link className="hover:underline" href={`/product/${product._id}`}>
+          <p className="text-lg capitalize font-semibold">{product.name}</p>
+        </Link>
+        <p className="text-default-500 px-1">${product.defaultPrice.toFixed(2)}</p>
       </CardBody>
+      <CardFooter
+        {...cardFooterProps}
+        className={clsx('justify-between h-20 text-ellipsis gap-8', cardFooterProps?.className)}
+      >
+        <p className="flex-1 text-sm capitalize text-default-600 line-clamp-3">
+          {product.description}
+        </p>
+        {action}
+      </CardFooter>
     </Card>
   );
 };

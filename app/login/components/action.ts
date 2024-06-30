@@ -51,7 +51,6 @@ const login = async (prevState: any, data: FormData) => {
 
     shouldRedirect = true;
   } catch (error: any) {
-    console.error(error);
     if (error instanceof AxiosError)
       return {
         success: false,

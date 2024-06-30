@@ -1,4 +1,7 @@
 import React, { Suspense } from 'react';
+import Image from 'next/image';
+
+import { navbarWidth } from './layout';
 
 import { pubRequest } from '@/utils';
 import { ProductCard } from '@/components';
@@ -15,8 +18,10 @@ const LoadProducts = async () => {
 const Home = () => {
   return (
     <>
-      <div className="text-sm flex" />
-      <div className="flex flex-wrap gap-8 justify-center pt-8">
+      <div className={'flex relative'} style={{ minHeight: `calc(100vh - ${navbarWidth}px)` }}>
+        <Image fill alt="lake picture" src="/banner.jpg" />
+      </div>
+      <div className="flex gap-10 py-5 px-40 flex-wrap justify-between">
         <LoadProducts />
       </div>
     </>
