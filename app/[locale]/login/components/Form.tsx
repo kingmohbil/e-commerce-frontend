@@ -3,10 +3,10 @@ import React from 'react';
 import { useFormState } from 'react-dom';
 import { Input } from '@nextui-org/react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 import { login } from './action';
 
-import messages from '@/config/languages/en';
 import Typography from '@/components/Typography';
 import PasswordInput from '@/components/inputs/PasswordInput';
 import FormSection from '@/components/forms/FormSection';
@@ -15,44 +15,45 @@ import { ServerActionButton } from '@/components';
 export interface LogInFormProps {}
 
 const LogInForm: React.FC<LogInFormProps> = ({}) => {
-  const [{ errors }, action] = useFormState(login, { success: false });
+  const [data, action] = useFormState(login, { success: false });
+  const { t } = useTranslation();
 
   return (
     <FormSection action={action}>
       <Typography className="pb-10" variant="h3">
-        {messages.loginForm.title}
+        {t('formTitle')}
       </Typography>
       <Input
         isRequired
-        errorMessage={errors?.email}
+        errorMessage={data?.errors?.email}
         id="email"
-        isInvalid={!!errors?.email}
-        label={messages.loginForm.emailField}
+        isInvalid={!!data?.errors?.email}
+        label={t('emailLabel')}
         labelPlacement="outside"
         name="email"
-        placeholder={messages.loginForm.emailFieldPlaceholder}
+        placeholder={t('emailPlaceholder')}
         size="lg"
         variant="bordered"
       />
       <PasswordInput
         isRequired
-        errorMessage={errors?.password}
+        errorMessage={data?.errors?.password}
         id="password"
-        isInvalid={!!errors?.password}
-        label={messages.loginForm.passwordField}
+        isInvalid={!!data?.errors?.password}
+        label={t('passwordLabel')}
         labelPlacement="outside"
         name="password"
-        placeholder={messages.loginForm.passwordFieldPlaceholder}
+        placeholder={t('passwordPlaceholder')}
         size="lg"
         variant="bordered"
       />
       <ServerActionButton fullWidth className="mt-3" color="primary" variant="solid">
-        {messages.loginForm.submitTitle}
+        {t('submitButton')}
       </ServerActionButton>
       <span className="text-sm w-full">
-        {messages.loginForm.noAccount} &nbsp;
+        {t('doesHaveAccount')} &nbsp;
         <Link className="text-sky-500" href="/signup">
-          {messages.loginForm.registerNow}
+          {t('registerNow')}
         </Link>
       </span>
     </FormSection>

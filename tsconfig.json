@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "i18nConfig.js",
-    "components/providers/TranslationsProvider.jsx"
+    "components/providers/TranslationsProvider.tsx"
   ],
   "exclude": ["node_modules"]
 }

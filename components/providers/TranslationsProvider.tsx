@@ -5,7 +5,19 @@ import { createInstance } from 'i18next';
 
 import initTranslations from '@/i18next';
 
-export default function TranslationsProvider({ children, locale, namespaces, resources }) {
+interface TranslationsProviderProps {
+  children: React.ReactNode;
+  locale: string;
+  namespaces: string[];
+  resources?: any;
+}
+
+export default function TranslationsProvider({
+  children,
+  locale,
+  namespaces,
+  resources,
+}: TranslationsProviderProps) {
   const i18n = createInstance();
 
   initTranslations(locale, namespaces, i18n, resources);

@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import { redirect } from 'next/navigation';
 
-import { pubRequest, formDataIntoObject } from '@/utils';
+import { request, formDataIntoObject } from '@/utils';
 import { flattenError } from '@/validation/handlers/flattenErrors';
 import loginSchema from '@/validation/auth/loginSchema';
 
@@ -27,13 +27,10 @@ const login = async (prevState: any, data: FormData) => {
         errors: flattenError(validation.error),
       };
 
-    const res = await pubRequest.post<{ accessToken: string; refreshToken: string }>(
-      `/auth/login`,
-      {
-        email: validation.data.email,
-        password: validation.data.password,
-      }
-    );
+    const res = await request.post<{ accessToken: string; refreshToken: string }>(`/auth/login`, {
+      email: validation.data.email,
+      password: validation.data.password,
+    });
 
     cookies().set({
       name: 'access_token',

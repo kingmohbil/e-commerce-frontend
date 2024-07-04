@@ -1,0 +1,10 @@
+{
+  "formTitle": "Login Form",
+  "emailLabel": "Email",
+  "emailPlaceholder": "example@domain.com",
+  "passwordLabel": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "submitButton": "Login",
+  "doesHaveAccount": "You don't have account?",
+  "registerNow": "Register now"
+}
