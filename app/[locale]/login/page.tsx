@@ -17,7 +17,7 @@ const Page = async ({ params }: LocaleParams) => {
   const { resources } = await initTranslations(params.locale, ['login-form']);
 
   return (
-    <div className="h-svh flex justify-center items-center">
+    <div className="flex flex-1 justify-center items-center">
       <TranslationsProvider
         locale={params.locale}
         namespaces={['login-form']}
