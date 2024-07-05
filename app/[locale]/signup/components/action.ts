@@ -2,7 +2,7 @@
 import { AxiosError } from 'axios';
 import { redirect } from 'next/navigation';
 
-import { pubRequest, formDataIntoObject } from '@/utils';
+import { request, formDataIntoObject } from '@/utils';
 import { flattenError } from '@/validation/handlers/flattenErrors';
 import signupSchema from '@/validation/auth/signupSchema';
 
@@ -16,7 +16,7 @@ const signup = async (prevState: any, data: FormData) => {
       return {
         errors: flattenError(validation.error),
       };
-    await pubRequest.post('/auth/signup', validation.data);
+    await request.post('/auth/signup', validation.data);
   } catch (error: any) {
     if (error instanceof AxiosError) return { success: false, errors: error.response?.data.errors };
 
