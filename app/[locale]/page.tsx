@@ -3,10 +3,9 @@ import Image from 'next/image';
 import { Button } from '@nextui-org/react';
 
 import { navbarWidth } from './layout';
-import CategoriesMenu from './layout-components/CategoriesMenu';
 
 import { request } from '@/utils';
-import { ProductCard } from '@/components';
+import { ProductCard, AnimateChildren } from '@/components';
 import initTranslations from '@/i18next';
 
 const LoadProducts = async ({ locale }: { locale: string }) => {
@@ -17,8 +16,8 @@ const LoadProducts = async ({ locale }: { locale: string }) => {
     <ProductCard
       key={product._id}
       action={
-        <Button color="primary" radius="none" variant="shadow">
-          {t('addToCartButtonText')}
+        <Button color="primary" radius="full" variant="shadow">
+          {t('button.addToCart')}
         </Button>
       }
       className="w-[500px]"
@@ -44,7 +43,19 @@ const Home: FC<HomeProps> = async ({ params }) => {
       <div className="flex gap-10 py-5 px-40 flex-wrap justify-between flex-col text-center">
         <p className="text-5xl text-white capitalize">{t('featuredProducts')}</p>
         <div className="flex">
-          <LoadProducts {...params} />
+          <AnimateChildren
+            initial="hidden"
+            variants={{
+              visible: { opacity: 1 },
+              hidden: { opacity: 0 },
+            }}
+            viewport={{ once: true }}
+            whileInView="visible"
+          >
+            <div className="flex gap-2">
+              <LoadProducts {...params} />
+            </div>
+          </AnimateChildren>
         </div>
       </div>
     </>

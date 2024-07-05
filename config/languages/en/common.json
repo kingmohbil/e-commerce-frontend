@@ -1,4 +1,6 @@
 {
-  "loginButtonText": "Login",
-  "addToCartButtonText": "Add to Cart"
+  "button": {
+    "login": "Login",
+    "addToCart": "Add to cart"
+  }
 }

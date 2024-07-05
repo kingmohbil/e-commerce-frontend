@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import { AnimatedImage, AnimatedImageProps } from '@/components';
-import { ProductType } from '@/types/product';
 
 export interface ProductCardProps extends CardProps {
   product: ProductType;
@@ -42,7 +41,7 @@ const ProductCard: FC<ProductCardProps> = ({
         {...cardFooterProps}
         className={clsx('justify-between h-20 text-ellipsis gap-8', cardFooterProps?.className)}
       >
-        <p className="flex-1 text-sm capitalize text-default-600 line-clamp-3">
+        <p className="flex-1 text-sm capitalize text-default-600 text-left line-clamp-3">
           {product.description}
         </p>
         {action}

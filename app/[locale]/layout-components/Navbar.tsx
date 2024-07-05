@@ -56,7 +56,7 @@ const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }: { locale: string 
 
       <NavbarContent justify="end">
         <Button radius="full" variant="shadow">
-          {t('loginButtonText')}
+          {t('button.login')}
         </Button>
       </NavbarContent>
     </Navbar>
