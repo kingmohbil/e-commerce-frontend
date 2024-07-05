@@ -1,10 +1,19 @@
 {
-  "formTitle": "Login Form",
-  "emailLabel": "Email",
-  "emailPlaceholder": "example@domain.com",
-  "passwordLabel": "Password",
-  "passwordPlaceholder": "Enter your password",
-  "submitButton": "Login",
+  "title": {
+    "page": "Login",
+    "form": "Login Form"
+  },
+  "label": {
+    "email": "Email",
+    "password": "Password"
+  },
+  "placeholder": {
+    "email": "example@domain.com",
+    "password": "Enter your password"
+  },
+  "button": {
+    "submit": "Login"
+  },
   "doesHaveAccount": "You don't have account?",
   "registerNow": "Register now"
 }

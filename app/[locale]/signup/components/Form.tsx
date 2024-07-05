@@ -21,7 +21,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
     <form action={action}>
       <Card className="w-[500px] flex items-center p-10 py-5 gap-3">
         <Typography className="pb-5" variant="h3">
-          {t('title')}
+          {t('title.form')}
         </Typography>
         <div className="flex flex-row gap-4">
           <Input

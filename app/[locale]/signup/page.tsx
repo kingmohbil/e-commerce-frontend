@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: LocaleParams) {
   const { t } = await initTranslations(params.locale, ['signup-form']);
 
   return {
-    title: t('pageTitle'),
+    title: t('title.page'),
   };
 }
 

@@ -1,18 +1,20 @@
 import React from 'react';
-import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: LocaleParams) {
+  const { t } = await initTranslations(params.locale, ['login-form']);
+
+  return {
+    title: t('title.page'),
+  };
+}
 
 import Form from './components/Form';
 
 import initTranslations from '@/i18next';
-import TranslationsProvider from '@/components/providers/TranslationsProvider';
-import messages from '@/config/languages/en';
-
-export const metadata: Metadata = {
-  title: messages.loginForm.title,
-};
+import { TranslationsProvider } from '@/components';
 
 const Page = async ({ params }: LocaleParams) => {
-  const { t, resources } = await initTranslations(params.locale, ['login-form']);
+  const { resources } = await initTranslations(params.locale, ['login-form']);
 
   return (
     <div className="h-svh flex justify-center items-center">

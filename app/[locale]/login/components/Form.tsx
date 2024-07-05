@@ -21,17 +21,17 @@ const LogInForm: React.FC<LogInFormProps> = ({}) => {
   return (
     <FormSection action={action}>
       <Typography className="pb-10" variant="h3">
-        {t('formTitle')}
+        {t('title.form')}
       </Typography>
       <Input
         isRequired
         errorMessage={data?.errors?.email}
         id="email"
         isInvalid={!!data?.errors?.email}
-        label={t('emailLabel')}
+        label={t('label.email')}
         labelPlacement="outside"
         name="email"
-        placeholder={t('emailPlaceholder')}
+        placeholder={t('placeholder.email')}
         size="lg"
         variant="bordered"
       />
@@ -40,15 +40,15 @@ const LogInForm: React.FC<LogInFormProps> = ({}) => {
         errorMessage={data?.errors?.password}
         id="password"
         isInvalid={!!data?.errors?.password}
-        label={t('passwordLabel')}
+        label={t('label.password')}
         labelPlacement="outside"
         name="password"
-        placeholder={t('passwordPlaceholder')}
+        placeholder={t('placeholder.password')}
         size="lg"
         variant="bordered"
       />
       <ServerActionButton fullWidth className="mt-3" color="primary" variant="solid">
-        {t('submitButton')}
+        {t('button.submit')}
       </ServerActionButton>
       <span className="text-sm w-full">
         {t('doesHaveAccount')} &nbsp;
