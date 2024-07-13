@@ -1,6 +1,10 @@
 export {};
 
 declare global {
+  type AuthenticatedUser = {
+    _id: string;
+  };
+
   type Metadata = {
     price: number;
     size: string;
