@@ -10,7 +10,7 @@ import loginSchema from '@/validation/auth/loginSchema';
 
 const cookieOptions: Partial<ResponseCookie> = {
   httpOnly: true,
-  secure: true,
+  // secure: true,
   sameSite: 'strict',
   path: '/',
 };

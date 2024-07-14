@@ -4,11 +4,12 @@ import { Navbar, NavbarProps, NavbarContent, Button } from '@nextui-org/react';
 
 import NavbarItems from './NavbarItems';
 import CategoriesMenu from './CategoriesMenu';
+import AuthUserMenu from './AuthUserMenu';
 
 import { AmazonLogo } from '@/components';
 import { siteConfig } from '@/config/site';
 import initTranslations from '@/i18next';
-import { request } from '@/utils';
+import { request, getSession } from '@/utils';
 
 export interface LayoutNavbarProps extends NavbarProps {
   locale: string;
@@ -38,6 +39,7 @@ const GetCategoriesMenu = async () => {
 
 const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }: { locale: string }) => {
   const { t } = await initTranslations(locale, ['common']);
+  const user = getSession();
 
   return (
     <Navbar className="bg-white dark:bg-black">
@@ -55,9 +57,13 @@ const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }: { locale: string 
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <Button radius="full" variant="shadow">
-          {t('button.login')}
-        </Button>
+        {user ? (
+          <AuthUserMenu />
+        ) : (
+          <Button radius="full" variant="shadow">
+            {t('button.login')}
+          </Button>
+        )}
       </NavbarContent>
     </Navbar>
   );

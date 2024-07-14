@@ -5,6 +5,21 @@ declare global {
     _id: string;
   };
 
+  type User = AuthenticatedUser & {
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string;
+    createdAt: string;
+    email: {
+      emailAddress: string;
+      verified: boolean;
+    };
+    phone: {
+      phoneNumber: string;
+      verified: boolean;
+    };
+  };
+
   type Metadata = {
     price: number;
     size: string;
