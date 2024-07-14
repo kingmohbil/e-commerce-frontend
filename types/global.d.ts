@@ -5,7 +5,7 @@ declare global {
     _id: string;
   };
 
-  type User = AuthenticatedUser & {
+  type UserType = AuthenticatedUser & {
     firstName: string;
     lastName: string;
     dateOfBirth: string;

@@ -11,13 +11,16 @@ import {
 
 interface AuthUserMenuProps extends Partial<DropdownProps> {
   dropdownTriggerProps?: DropdownTriggerProps;
+  user?: UserType;
 }
 
-const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props }) => {
+const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, user, ...props }) => {
   return (
     <Dropdown {...props}>
       <DropdownTrigger {...dropdownTriggerProps}>
-        <Button variant="bordered">Open Menu</Button>
+        <Button variant="bordered">
+          {user?.firstName} {user?.lastName}
+        </Button>
       </DropdownTrigger>
       <DropdownMenu>
         <DropdownItem key="new">New file</DropdownItem>
