@@ -9,7 +9,12 @@ import {
   DropdownItem,
   Button,
 } from '@nextui-org/react';
-import { AiOutlineUser } from 'react-icons/ai';
+import {
+  AiOutlineUser,
+  AiOutlineSetting,
+  AiOutlineDashboard,
+  AiOutlineLogout,
+} from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
@@ -28,13 +33,13 @@ const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props })
         </Button>
       </DropdownTrigger>
       <DropdownMenu className="capitalize">
-        <DropdownItem key="dashboard">
+        <DropdownItem key="dashboard" startContent={<AiOutlineDashboard size="20px" />}>
           <Link href="/protected/dashboard">{t('authLinks.dashboard')}</Link>
         </DropdownItem>
-        <DropdownItem key="settings">
-          <Link href="/protected/settings">{t('authLinks.settings')}</Link>
+        <DropdownItem key="settings" startContent={<AiOutlineSetting size="20px" />}>
+          <Link href="/protected/dashboard/settings">{t('authLinks.settings')}</Link>
         </DropdownItem>
-        <DropdownItem key="logout" color="danger">
+        <DropdownItem key="logout" color="danger" startContent={<AiOutlineLogout size="20px" />}>
           {t('authLinks.logout')}
         </DropdownItem>
       </DropdownMenu>
