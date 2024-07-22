@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
-import { Navbar, NavbarProps, NavbarContent, Button } from '@nextui-org/react';
+import { Navbar, NavbarProps, NavbarContent, Button, NavbarBrand } from '@nextui-org/react';
 
 import NavbarItems from './NavbarItems';
 import CategoriesMenu from './CategoriesMenu';
 import AuthUserMenu from './AuthUserMenu';
 
-import { AmazonLogo } from '@/components';
+import { AmazonLogo, TranslationsProvider } from '@/components';
 import { siteConfig } from '@/config/site';
 import initTranslations from '@/i18next';
 import { request, getSession } from '@/utils';
@@ -26,7 +26,7 @@ const GetCategoriesMenu = async () => {
         backdrop="blur"
         categories={data.categories}
         triggerComponent={
-          <Button className="text-md" variant="light">
+          <Button className="text-sm" variant="light">
             Categories
           </Button>
         }
@@ -37,33 +37,37 @@ const GetCategoriesMenu = async () => {
   }
 };
 
-const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }: { locale: string }) => {
+const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }) => {
   const { t } = await initTranslations(locale, ['common']);
   const user = getSession();
 
   return (
-    <Navbar className="bg-white dark:bg-black">
-      <NavbarContent className="gap-16" justify="start">
-        <div className="flex items-center gap-8">
-          <Link href="/">
-            <AmazonLogo className="fill-black dark:fill-white" />
-          </Link>
-          <p className="text-xl font-semibold capitalize">{siteConfig.name}</p>
-        </div>
-        <ul className="flex gap-4 items-center">
+    <Navbar
+      className="bg-white dark:bg-black justify-between"
+      classNames={{ wrapper: 'min-w-full' }}
+    >
+      <NavbarBrand className="gap-2">
+        <AmazonLogo className="fill-black dark:fill-white" />
+        <Link className="text-xl font-semibold capitalize" href="/">
+          {siteConfig.name}
+        </Link>
+      </NavbarBrand>
+
+      <NavbarContent justify="end">
+        <ul className="flex gap-2 items-center">
           <NavbarItems />
           <GetCategoriesMenu />
         </ul>
-      </NavbarContent>
 
-      <NavbarContent justify="end">
-        {user ? (
-          <AuthUserMenu />
-        ) : (
-          <Button radius="full" variant="shadow">
-            {t('button.login')}
-          </Button>
-        )}
+        <TranslationsProvider locale={locale} namespaces={['nav']}>
+          {user ? (
+            <AuthUserMenu />
+          ) : (
+            <Button radius="full" variant="shadow">
+              {t('button.login')}
+            </Button>
+          )}
+        </TranslationsProvider>
       </NavbarContent>
     </Navbar>
   );

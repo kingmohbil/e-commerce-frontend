@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import {
   Dropdown,
@@ -8,24 +9,34 @@ import {
   DropdownItem,
   Button,
 } from '@nextui-org/react';
+import { AiOutlineUser } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
 interface AuthUserMenuProps extends Partial<DropdownProps> {
   dropdownTriggerProps?: DropdownTriggerProps;
-  user?: UserType;
 }
 
-const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, user, ...props }) => {
+const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props }) => {
+  const { t } = useTranslation('');
+
   return (
-    <Dropdown {...props}>
+    <Dropdown backdrop="blur" {...props}>
       <DropdownTrigger {...dropdownTriggerProps}>
-        <Button variant="bordered">
-          {user?.firstName} {user?.lastName}
+        <Button isIconOnly size="md" variant="solid">
+          <AiOutlineUser size="20px" />
         </Button>
       </DropdownTrigger>
-      <DropdownMenu>
-        <DropdownItem key="new">New file</DropdownItem>
-        <DropdownItem key="copy">Copy link</DropdownItem>
-        <DropdownItem key="edit">Edit file</DropdownItem>
+      <DropdownMenu className="capitalize">
+        <DropdownItem key="dashboard">
+          <Link href="/protected/dashboard">{t('authLinks.dashboard')}</Link>
+        </DropdownItem>
+        <DropdownItem key="settings">
+          <Link href="/protected/settings">{t('authLinks.settings')}</Link>
+        </DropdownItem>
+        <DropdownItem key="logout" color="danger">
+          {t('authLinks.logout')}
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

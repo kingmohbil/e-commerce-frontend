@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import clsx from 'clsx';
 
 import LayoutNavbar from './layout-components/Navbar';
-import CategoriesMenuProps from './layout-components/CategoriesMenu';
 
 import { NextUIProvider } from '@/components';
 import { siteConfig } from '@/config/site';
@@ -34,17 +33,11 @@ const RootLayout = async ({ children, params }: LayoutProps) => {
   const { t } = await initTranslations(params.locale, ['common']);
 
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en">
       <head />
-      <body
-        className={clsx('bg-background font-poppins antialiased', fontPoppins.variable)}
-        style={{
-          background:
-            'linear-gradient(to right top, #090c0f, #070a0d, #06080b, #040508, #020306, #06070c, #090b10, #0d0e14, #13151c, #161c24, #19222d, #1b2935)',
-        }}
-      >
-        <NextUIProvider themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
-          <div className="min-h-screen flex flex-col">
+      <body className={clsx('bg-background font-poppins ', fontPoppins.variable)}>
+        <NextUIProvider themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
+          <div className="min-h-svh flex flex-col bg-[#f7f5f2] dark:bg-black">
             <LayoutNavbar {...params} />
             {children}
           </div>

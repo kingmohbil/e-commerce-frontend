@@ -1,0 +1,7 @@
+{
+  "authLinks": {
+    "dashboard": "dashboard",
+    "settings": "settings",
+    "logout": "logout"
+  }
+}
