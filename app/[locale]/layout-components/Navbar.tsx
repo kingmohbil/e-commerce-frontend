@@ -5,6 +5,7 @@ import { Navbar, NavbarProps, NavbarContent, Button, NavbarBrand } from '@nextui
 import NavbarItems from './NavbarItems';
 import CategoriesMenu from './CategoriesMenu';
 import AuthUserMenu from './AuthUserMenu';
+import PublicUserMenu from './PublicUserMenu';
 
 import { AmazonLogo, TranslationsProvider } from '@/components';
 import { siteConfig } from '@/config/site';
@@ -43,6 +44,7 @@ const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }) => {
 
   return (
     <Navbar
+      isBordered
       className="bg-white dark:bg-black justify-between"
       classNames={{ wrapper: 'min-w-full' }}
     >
@@ -60,13 +62,7 @@ const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }) => {
         </ul>
 
         <TranslationsProvider locale={locale} namespaces={['nav']}>
-          {user ? (
-            <AuthUserMenu />
-          ) : (
-            <Button radius="full" variant="shadow">
-              {t('button.login')}
-            </Button>
-          )}
+          {user ? <AuthUserMenu /> : <PublicUserMenu />}
         </TranslationsProvider>
       </NavbarContent>
     </Navbar>

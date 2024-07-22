@@ -3,5 +3,8 @@
     "dashboard": "dashboard",
     "settings": "settings",
     "logout": "logout"
+  },
+  "publicLinks": {
+    "login": "login"
   }
 }
