@@ -1,6 +1,10 @@
 export {};
 
 declare global {
+  type IconSvgProps = React.ComponentProps<'svg'> & {
+    size?: number;
+  };
+
   type AuthenticatedUser = {
     _id: string;
   };

@@ -11,6 +11,7 @@ import Typography from '@/components/Typography';
 import PasswordInput from '@/components/inputs/PasswordInput';
 import FormSection from '@/components/forms/FormSection';
 import { ServerActionButton } from '@/components';
+import paths from '@/config/paths';
 
 export interface LogInFormProps {}
 
@@ -52,7 +53,7 @@ const LogInForm: React.FC<LogInFormProps> = ({}) => {
       </ServerActionButton>
       <span className="text-sm w-full">
         {t('doesHaveAccount')} &nbsp;
-        <Link className="text-sky-500" href="/signup">
+        <Link className="text-sky-500" href={paths.signupPage}>
           {t('registerNow')}
         </Link>
       </span>

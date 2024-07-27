@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "i18nConfig.js",
-    "components/providers/TranslationsProvider.tsx"
+    "components/providers/TranslationsProvider.tsx",
+    "app/api/verify-token"
   ],
   "exclude": ["node_modules"]
 }

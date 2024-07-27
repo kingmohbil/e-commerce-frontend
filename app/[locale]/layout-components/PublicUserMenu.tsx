@@ -10,16 +10,17 @@ import {
   DropdownMenu,
   DropdownItem,
 } from '@nextui-org/react';
-import Link from 'next/link';
 import { AiOutlineUser } from 'react-icons/ai';
-1;
+import Link from 'next/link';
+
+import paths from '@/config/paths';
 
 export interface PublicUserMenuProps extends Partial<DropdownProps> {
   dropdownTriggerProps?: DropdownTriggerProps;
 }
 
 const PublicUserMenu: FC<PublicUserMenuProps> = ({ dropdownTriggerProps, ...props }) => {
-  const { t } = useTranslation('');
+  const { t } = useTranslation('nav');
 
   return (
     <Dropdown backdrop="blur" {...props}>
@@ -29,8 +30,8 @@ const PublicUserMenu: FC<PublicUserMenuProps> = ({ dropdownTriggerProps, ...prop
         </Button>
       </DropdownTrigger>
       <DropdownMenu className="capitalize">
-        <DropdownItem key="login">
-          <Link href="/login">{t('authLinks.login')}</Link>
+        <DropdownItem key="login" as={Link} href={paths.loginPage}>
+          {t('publicLinks.login')}
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Navbar, NavbarProps, NavbarContent, Button, NavbarBrand } from '@nextui-org/react';
 
@@ -9,14 +9,13 @@ import PublicUserMenu from './PublicUserMenu';
 
 import { AmazonLogo, TranslationsProvider } from '@/components';
 import { siteConfig } from '@/config/site';
-import initTranslations from '@/i18next';
 import { request, getSession } from '@/utils';
 
 export interface LayoutNavbarProps extends NavbarProps {
   locale: string;
 }
 
-const GetCategoriesMenu = async () => {
+const GetCategoriesMenu: any = async () => {
   try {
     const { data } = await request.get<{ count: number; categories: CategoryType[] }>(
       '/category?active=true'
@@ -38,9 +37,8 @@ const GetCategoriesMenu = async () => {
   }
 };
 
-const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }) => {
-  const { t } = await initTranslations(locale, ['common']);
-  const user = getSession();
+const LayoutNavbar = async ({ locale }: LayoutNavbarProps) => {
+  const user = await getSession();
 
   return (
     <Navbar
@@ -50,7 +48,7 @@ const LayoutNavbar: FC<LayoutNavbarProps> = async ({ locale }) => {
     >
       <NavbarBrand className="gap-2">
         <AmazonLogo className="fill-black dark:fill-white" />
-        <Link className="text-xl font-semibold capitalize" href="/">
+        <Link className="text-xl font-semibold capitalize" href="/home">
           {siteConfig.name}
         </Link>
       </NavbarBrand>

@@ -4,10 +4,8 @@ import clsx from 'clsx';
 
 import LayoutNavbar from './layout-components/Navbar';
 
-import { NextUIProvider } from '@/components';
+import { NextUIProvider, TranslationsProvider } from '@/components';
 import { siteConfig } from '@/config/site';
-import { fontPoppins } from '@/config/fonts';
-import initTranslations from '@/i18next';
 
 export const metadata: Metadata = {
   title: {
@@ -30,18 +28,18 @@ interface LayoutProps {
 }
 
 const RootLayout = async ({ children, params }: LayoutProps) => {
-  const { t } = await initTranslations(params.locale, ['common']);
-
   return (
     <html lang="en">
       <head />
-      <body className={clsx('bg-background font-poppins ', fontPoppins.variable)}>
-        <NextUIProvider themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
-          <div className="min-h-svh flex flex-col bg-[#f7f5f2] dark:bg-black">
-            <LayoutNavbar {...params} />
-            {children}
-          </div>
-        </NextUIProvider>
+      <body className={clsx('bg-background font-inter')}>
+        <TranslationsProvider {...params}>
+          <NextUIProvider themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
+            <div className="min-h-svh flex flex-col bg-[#f7f5f2] dark:bg-black">
+              {<LayoutNavbar {...params} />}
+              {children}
+            </div>
+          </NextUIProvider>
+        </TranslationsProvider>
       </body>
     </html>
   );

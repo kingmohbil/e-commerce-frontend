@@ -1,15 +1,15 @@
-import { NavbarItem } from '@nextui-org/navbar';
 import Link from 'next/link';
 
 import { siteConfig } from '@/config/site';
 
-const NavbarItems = () =>
-  siteConfig.navItems.map((item) => (
-    <NavbarItem key={crypto.randomUUID()}>
-      <Link className="text-sm" href={item.href}>
+const NavbarItems = () => (
+  <>
+    {siteConfig.navItems.map((item) => (
+      <Link key={crypto.randomUUID()} className="text-sm" href={item.href}>
         {item.label}
       </Link>
-    </NavbarItem>
-  ));
+    ))}
+  </>
+);
 
 export default NavbarItems;

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { signup } from './action';
 
+import paths from '@/config/paths';
 import { ServerActionButton } from '@/components';
 import Typography from '@/components/Typography';
 import PasswordInput from '@/components/inputs/PasswordInput';
@@ -105,7 +106,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
         </ServerActionButton>
         <span className="text-sm w-full">
           {t('haveAnAccount')} &nbsp;
-          <Link className="text-sky-500" href="/login">
+          <Link className="text-sky-500" href={paths.loginPage}>
             {t('login')}
           </Link>
         </span>

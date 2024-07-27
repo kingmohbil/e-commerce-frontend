@@ -8,7 +8,7 @@ import initTranslations from '@/i18next';
 interface TranslationsProviderProps {
   children: React.ReactNode;
   locale: string;
-  namespaces: string[];
+  namespaces?: string[];
   resources?: any;
 }
 
@@ -20,7 +20,7 @@ const TranslationsProvider = ({
 }: TranslationsProviderProps) => {
   const i18n = createInstance();
 
-  initTranslations(locale, namespaces, i18n, resources);
+  initTranslations(locale, namespaces ?? ['common'], i18n, resources);
 
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 };

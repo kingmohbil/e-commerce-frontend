@@ -6,5 +6,9 @@
   },
   "publicLinks": {
     "login": "login"
+  },
+  "dashboardLinks": {
+    "home": "home",
+    "store": "store"
   }
 }

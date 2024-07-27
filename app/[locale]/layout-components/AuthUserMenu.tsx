@@ -18,6 +18,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
+import paths from '@/config/paths';
+
 interface AuthUserMenuProps extends Partial<DropdownProps> {
   dropdownTriggerProps?: DropdownTriggerProps;
 }
@@ -33,11 +35,21 @@ const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props })
         </Button>
       </DropdownTrigger>
       <DropdownMenu className="capitalize">
-        <DropdownItem key="dashboard" startContent={<AiOutlineDashboard size="20px" />}>
-          <Link href="/protected/dashboard">{t('authLinks.dashboard')}</Link>
+        <DropdownItem
+          key="dashboard"
+          as={Link}
+          href={paths.dashboardPage}
+          startContent={<AiOutlineDashboard size="20px" />}
+        >
+          {t('authLinks.dashboard')}
         </DropdownItem>
-        <DropdownItem key="settings" startContent={<AiOutlineSetting size="20px" />}>
-          <Link href="/protected/dashboard/settings">{t('authLinks.settings')}</Link>
+        <DropdownItem
+          key="settings"
+          as={Link}
+          href={paths.settingsPage}
+          startContent={<AiOutlineSetting size="20px" />}
+        >
+          {t('authLinks.settings')}
         </DropdownItem>
         <DropdownItem key="logout" color="danger" startContent={<AiOutlineLogout size="20px" />}>
           {t('authLinks.logout')}
