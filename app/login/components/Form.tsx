@@ -3,7 +3,6 @@ import React from 'react';
 import { useFormState } from 'react-dom';
 import { Input } from '@nextui-org/react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 
 import { login } from './action';
 
@@ -11,28 +10,30 @@ import Typography from '@/components/Typography';
 import PasswordInput from '@/components/inputs/PasswordInput';
 import FormSection from '@/components/forms/FormSection';
 import { ServerActionButton } from '@/components';
-import paths from '@/config/paths';
+import paths from '@/config/paths.json';
+import text from '@/config/languages/en/text.json';
 
 export interface LogInFormProps {}
 
+const loginFormText = text.screens.login;
+
 const LogInForm: React.FC<LogInFormProps> = ({}) => {
   const [data, action] = useFormState(login, { success: false });
-  const { t } = useTranslation();
 
   return (
     <FormSection action={action}>
       <Typography className="pb-10" variant="h3">
-        {t('title.form')}
+        {loginFormText.title.form}
       </Typography>
       <Input
         isRequired
         errorMessage={data?.errors?.email}
         id="email"
         isInvalid={!!data?.errors?.email}
-        label={t('label.email')}
+        label={loginFormText.label.email}
         labelPlacement="outside"
         name="email"
-        placeholder={t('placeholder.email')}
+        placeholder={loginFormText.placeholder.email}
         size="lg"
         variant="bordered"
       />
@@ -41,20 +42,20 @@ const LogInForm: React.FC<LogInFormProps> = ({}) => {
         errorMessage={data?.errors?.password}
         id="password"
         isInvalid={!!data?.errors?.password}
-        label={t('label.password')}
+        label={loginFormText.label.password}
         labelPlacement="outside"
         name="password"
-        placeholder={t('placeholder.password')}
+        placeholder={loginFormText.placeholder.password}
         size="lg"
         variant="bordered"
       />
       <ServerActionButton fullWidth className="mt-3" color="primary" variant="solid">
-        {t('button.submit')}
+        {loginFormText.button.submit}
       </ServerActionButton>
       <span className="text-sm w-full">
-        {t('doesHaveAccount')} &nbsp;
-        <Link className="text-sky-500" href={paths.signupPage}>
-          {t('registerNow')}
+        {loginFormText.doesHaveAccount} &nbsp;
+        <Link className="text-sky-500" href={paths.signup}>
+          {loginFormText.registerNow}
         </Link>
       </span>
     </FormSection>

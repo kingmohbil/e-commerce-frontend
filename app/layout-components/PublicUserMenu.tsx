@@ -1,6 +1,5 @@
 'use client';
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   Dropdown,
   DropdownProps,
@@ -13,15 +12,14 @@ import {
 import { AiOutlineUser } from 'react-icons/ai';
 import Link from 'next/link';
 
-import paths from '@/config/paths';
+import paths from '@/config/paths.json';
+import text from '@/config/languages/en/text.json';
 
 export interface PublicUserMenuProps extends Partial<DropdownProps> {
   dropdownTriggerProps?: DropdownTriggerProps;
 }
 
 const PublicUserMenu: FC<PublicUserMenuProps> = ({ dropdownTriggerProps, ...props }) => {
-  const { t } = useTranslation('nav');
-
   return (
     <Dropdown backdrop="blur" {...props}>
       <DropdownTrigger {...dropdownTriggerProps}>
@@ -30,8 +28,8 @@ const PublicUserMenu: FC<PublicUserMenuProps> = ({ dropdownTriggerProps, ...prop
         </Button>
       </DropdownTrigger>
       <DropdownMenu className="capitalize">
-        <DropdownItem key="login" as={Link} href={paths.loginPage}>
-          {t('publicLinks.login')}
+        <DropdownItem key="login" as={Link} href={paths.login}>
+          {text.nav.publicLinks.login}
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

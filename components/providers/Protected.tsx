@@ -2,7 +2,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { redirect } from 'next/navigation';
 
-import paths from '@/config/paths';
+import paths from '@/config/paths.json';
 import { getSession } from '@/utils';
 
 export interface ProtectedProps extends PropsWithChildren {}
@@ -10,7 +10,7 @@ export interface ProtectedProps extends PropsWithChildren {}
 const Protected: FC<ProtectedProps> = async (props) => {
   const user = await getSession();
 
-  if (!user) redirect(paths.loginPage);
+  if (!user) redirect(paths.login);
 
   return <>{props.children}</>;
 };

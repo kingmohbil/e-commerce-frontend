@@ -3,21 +3,18 @@ import React, { FC } from 'react';
 import { Navbar, NavbarProps, NavbarContent } from '@nextui-org/react';
 import { FaStore } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
 
 import DashboardLink from './DashboardLink';
 
-import AuthUserMenu from '@/app/[locale]/layout-components/AuthUserMenu';
+import AuthUserMenu from '@/app/layout-components/AuthUserMenu';
 import { AmazonLogo } from '@/components';
 import { siteConfig } from '@/config/site';
+import text from '@/config/languages/en/text.json';
 
-export interface LayoutNavbarProps extends NavbarProps {
-  locale: string;
-}
+export interface LayoutNavbarProps extends NavbarProps {}
 
 const LayoutNavbar: FC<LayoutNavbarProps> = async ({}) => {
   const pathname = usePathname();
-  const { t } = useTranslation();
 
   return (
     <Navbar
@@ -33,11 +30,11 @@ const LayoutNavbar: FC<LayoutNavbarProps> = async ({}) => {
           {siteConfig.name}
         </DashboardLink>
         <DashboardLink
-          active={pathname.includes(t('dashboardLinks.store'))}
+          active={pathname.includes(text.nav.dashboardLinks.store)}
           href="dashboard/store"
           icon={<FaStore size={20} />}
         >
-          {t('dashboardLinks.store')}
+          {text.nav.dashboardLinks.store}
         </DashboardLink>
       </NavbarContent>
 

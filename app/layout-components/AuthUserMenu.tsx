@@ -15,18 +15,16 @@ import {
   AiOutlineDashboard,
   AiOutlineLogout,
 } from 'react-icons/ai';
-import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
-import paths from '@/config/paths';
+import text from '@/config/languages/en/text.json';
+import paths from '@/config/paths.json';
 
 interface AuthUserMenuProps extends Partial<DropdownProps> {
   dropdownTriggerProps?: DropdownTriggerProps;
 }
 
 const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props }) => {
-  const { t } = useTranslation('');
-
   return (
     <Dropdown backdrop="blur" {...props}>
       <DropdownTrigger {...dropdownTriggerProps}>
@@ -38,21 +36,21 @@ const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props })
         <DropdownItem
           key="dashboard"
           as={Link}
-          href={paths.dashboardPage}
+          href={paths.dashboard}
           startContent={<AiOutlineDashboard size="20px" />}
         >
-          {t('authLinks.dashboard')}
+          {text.nav.authLinks.dashboard}
         </DropdownItem>
         <DropdownItem
           key="settings"
           as={Link}
-          href={paths.settingsPage}
+          href={paths.settings}
           startContent={<AiOutlineSetting size="20px" />}
         >
-          {t('authLinks.settings')}
+          {text.nav.authLinks.settings}
         </DropdownItem>
         <DropdownItem key="logout" color="danger" startContent={<AiOutlineLogout size="20px" />}>
-          {t('authLinks.logout')}
+          {text.nav.authLinks.logout}
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

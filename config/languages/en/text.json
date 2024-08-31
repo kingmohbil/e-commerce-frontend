@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "authLinks": {
+      "dashboard": "dashboard",
+      "settings": "settings",
+      "logout": "logout"
+    },
+    "publicLinks": {
+      "login": "login"
+    },
+    "dashboardLinks": {
+      "home": "home",
+      "store": "store"
+    }
+  },
+  "common": {
+    "button": {
+      "login": "Login",
+      "addToCart": "Add to cart"
+    }
+  },
+  "screens": {
+    "home": {
+      "featuredProducts": "Hot pick"
+    },
+    "login": {
+      "title": {
+        "page": "Login",
+        "form": "Login Form"
+      },
+      "label": {
+        "email": "Email",
+        "password": "Password"
+      },
+      "placeholder": {
+        "email": "example@domain.com",
+        "password": "Enter your password"
+      },
+      "button": {
+        "submit": "Login"
+      },
+      "doesHaveAccount": "You don't have account?",
+      "registerNow": "Register now"
+    },
+    "signup": {
+      "title": {
+        "page": "Signup",
+        "form": "Signup"
+      },
+      "label": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "phoneNumber": "Phone Number",
+        "dateOfBirth": "Date Of Birth"
+      },
+      "placeholder": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "johndoe@gmail.com",
+        "password": "Enter your password",
+        "confirmPassword": "Confirm Password",
+        "phoneNumber": "+1 (111) 111 1111"
+      },
+      "button": {
+        "submit": "Create Account"
+      },
+      "haveAnAccount": "Already have an account?",
+      "login": "Login now"
+    }
+  }
+}

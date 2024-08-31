@@ -7,13 +7,12 @@ import CategoriesMenu from './CategoriesMenu';
 import AuthUserMenu from './AuthUserMenu';
 import PublicUserMenu from './PublicUserMenu';
 
-import { AmazonLogo, TranslationsProvider } from '@/components';
+import { AmazonLogo } from '@/components';
 import { siteConfig } from '@/config/site';
 import { request, getSession } from '@/utils';
+import paths from '@/config/paths.json';
 
-export interface LayoutNavbarProps extends NavbarProps {
-  locale: string;
-}
+export interface LayoutNavbarProps extends NavbarProps {}
 
 const GetCategoriesMenu: any = async () => {
   try {
@@ -37,7 +36,7 @@ const GetCategoriesMenu: any = async () => {
   }
 };
 
-const LayoutNavbar = async ({ locale }: LayoutNavbarProps) => {
+const LayoutNavbar = async ({}: LayoutNavbarProps) => {
   const user = await getSession();
 
   return (
@@ -48,7 +47,7 @@ const LayoutNavbar = async ({ locale }: LayoutNavbarProps) => {
     >
       <NavbarBrand className="gap-2">
         <AmazonLogo className="fill-black dark:fill-white" />
-        <Link className="text-xl font-semibold capitalize" href="/home">
+        <Link className="text-xl font-semibold capitalize" href={paths.home}>
           {siteConfig.name}
         </Link>
       </NavbarBrand>
@@ -59,9 +58,7 @@ const LayoutNavbar = async ({ locale }: LayoutNavbarProps) => {
           <GetCategoriesMenu />
         </ul>
 
-        <TranslationsProvider locale={locale} namespaces={['nav']}>
-          {user ? <AuthUserMenu /> : <PublicUserMenu />}
-        </TranslationsProvider>
+        {user ? <AuthUserMenu /> : <PublicUserMenu />}
       </NavbarContent>
     </Navbar>
   );
