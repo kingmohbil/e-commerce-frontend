@@ -3,7 +3,8 @@
     "authLinks": {
       "dashboard": "dashboard",
       "settings": "settings",
-      "logout": "logout"
+      "logout": "logout",
+      "cart": "cart"
     },
     "publicLinks": {
       "login": "login"
@@ -17,6 +18,12 @@
     "button": {
       "login": "Login",
       "addToCart": "Add to cart"
+    }
+  },
+  "modals": {
+    "cart": {
+      "title": "Cart",
+      "submitTitle": "Proceed to checkout"
     }
   },
   "screens": {

@@ -68,6 +68,7 @@ declare global {
     name: string;
     count: number;
     price: number;
+    size?: string;
   }
 
   interface CartType {
