@@ -10,7 +10,7 @@ const inter = Inter({
 
 import LayoutNavbar from './layout-components/Navbar';
 
-import { NextUIProvider, ReduxProvider, CartModal } from '@/components';
+import { NextUIProvider, ReduxProvider, CartModal, ReduxFlashMessage } from '@/components';
 import { siteConfig } from '@/config/site';
 import text from '@/config/languages/en/text.json';
 
@@ -46,6 +46,7 @@ const RootLayout = async ({ children }: LayoutProps) => {
               modalTitle={text.modals.cart.title}
               submitTitle={text.modals.cart.submitTitle}
             />
+            <ReduxFlashMessage />
           </ReduxProvider>
         </NextUIProvider>
       </body>

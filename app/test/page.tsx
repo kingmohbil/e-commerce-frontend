@@ -2,24 +2,20 @@
 import React, { FC, useState } from 'react';
 import { Button } from '@nextui-org/react';
 
-import { CartModal } from '@/components';
+import FlashMessage from '@/components/alert/FlashMessage';
 import text from '@/config/languages/en/text.json';
 
 export interface PageProps {}
 
 const Page: FC<PageProps> = ({}) => {
-  const [open, setOpen] = useState(true);
-
-  const onClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Button>{text.common.button.addToCart}</Button>
-      <CartModal
-        isOpen={open}
-        modalTitle={text.modals.cart.title}
-        submitTitle={text.modals.cart.submitTitle}
-      />
+      <Button onPress={() => setOpen(true)} />
+      <FlashMessage color="danger" open={open} onClose={() => setOpen(false)}>
+        Welcome
+      </FlashMessage>
     </>
   );
 };

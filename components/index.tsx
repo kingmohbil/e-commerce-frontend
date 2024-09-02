@@ -5,3 +5,4 @@ export * from './button';
 export * from './image';
 export * from './animation';
 export * from './modal';
+export * from './alert';

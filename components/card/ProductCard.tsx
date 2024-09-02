@@ -1,17 +1,21 @@
 'use client';
 import React, { ComponentProps, FC } from 'react';
-import { Card, CardProps, CardFooter, CardBody, CardFooterProps } from '@nextui-org/react';
+import { Card, CardProps, CardFooter, CardBody, CardFooterProps, Button } from '@nextui-org/react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
 import { AnimatedImage, AnimatedImageProps } from '@/components';
+import { useAppDispatch } from '@/hooks';
+import { add } from '@/redux/slices/cart';
+import { setFlashMessage } from '@/redux/slices/flash-message';
 
 export interface ProductCardProps extends CardProps {
-  product: ProductType;
+  product: Omit<ProductType, 'metadata'> & { size: string; price: number };
   imageProps?: Partial<AnimatedImageProps>;
   imageContainerProps?: ComponentProps<'div'>;
-  action?: React.ReactNode;
+  cart?: boolean;
   cardFooterProps?: CardFooterProps;
+  actionText?: string | React.ReactNode;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -19,9 +23,12 @@ const ProductCard: FC<ProductCardProps> = ({
   imageContainerProps,
   imageProps,
   cardFooterProps,
-  action,
+  cart,
+  actionText,
   ...props
 }) => {
+  const dispatcher = useAppDispatch();
+
   return (
     <Card
       radius="none"
@@ -35,7 +42,7 @@ const ProductCard: FC<ProductCardProps> = ({
         <Link className="hover:underline" href={`/product/${product._id}`}>
           <p className="text-lg capitalize font-semibold">{product.name}</p>
         </Link>
-        <p className="text-default-500 px-1">${product.defaultPrice.toFixed(2)}</p>
+        <p className="text-default-500 px-1">${product.price.toFixed(2)}</p>
       </CardBody>
       <CardFooter
         {...cardFooterProps}
@@ -44,7 +51,28 @@ const ProductCard: FC<ProductCardProps> = ({
         <p className="flex-1 text-sm capitalize text-default-600 text-left line-clamp-3">
           {product.description}
         </p>
-        {action}
+
+        {cart && (
+          <Button
+            color="primary"
+            radius="full"
+            variant="shadow"
+            onPress={() => {
+              dispatcher(
+                add({
+                  id: product._id,
+                  name: product.name,
+                  size: product.size,
+                  price: product.price,
+                  count: 1,
+                })
+              );
+              dispatcher(setFlashMessage({ message: 'Added product to cart', color: 'secondary' }));
+            }}
+          >
+            {actionText}
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );

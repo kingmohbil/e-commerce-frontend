@@ -38,7 +38,7 @@ declare global {
     active: boolean;
     createdAt: string;
     updatedAt: string;
-    metadata: MetaData[];
+    metadata: Metadata[];
     totalStock: number;
     imageURL: string;
     defaultPrice: number;
