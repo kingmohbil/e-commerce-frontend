@@ -10,7 +10,7 @@ export interface OrderUserDetailsProps {
 
 const OrderUserDetails: FC<OrderUserDetailsProps> = ({ user, className }) => {
   return (
-    <p className="text-medium capitalize">
+    <p className={clsx('text-lg font-semibold capitalize', className)}>
       {user.firstName} {user.lastName}
     </p>
   );
