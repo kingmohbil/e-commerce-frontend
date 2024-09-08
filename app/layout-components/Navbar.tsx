@@ -9,7 +9,7 @@ import PublicUserMenu from './PublicUserMenu';
 
 import { AmazonLogo } from '@/components';
 import { siteConfig } from '@/config/site';
-import { request, getSession } from '@/utils';
+import { request, getSession } from '@/utils/server';
 import paths from '@/config/paths.json';
 
 export interface LayoutNavbarProps extends NavbarProps {}

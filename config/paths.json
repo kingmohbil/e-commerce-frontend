@@ -3,5 +3,6 @@
   "signup": "/signup",
   "home": "/",
   "dashboard": "/dashboard",
-  "settings": "/dashboard/settings"
+  "settings": "/dashboard/settings",
+  "checkout": "/checkout"
 }

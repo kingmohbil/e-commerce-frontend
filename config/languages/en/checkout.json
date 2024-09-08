@@ -1,0 +1,13 @@
+{
+  "title": "checkout",
+  "table": {
+    "columns": {
+      "name": "name",
+      "size": "size",
+      "count": "quantity",
+      "price": "price",
+      "total": "total"
+    }
+  },
+  "emptyCart": "No products in your cart. Browse our selection and add items you love!"
+}

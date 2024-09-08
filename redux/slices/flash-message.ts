@@ -6,6 +6,7 @@ import { createSlice } from '@reduxjs/toolkit';
 interface FlashMessageType {
   message: string;
   color?: keyof ThemeColors;
+  autoHide?: number;
 }
 
 const initialState: FlashMessageType = {
@@ -20,10 +21,11 @@ const flashMessageSlice = createSlice({
 
     setFlashMessage: (
       state,
-      { payload: { message, color = 'default' } }: PayloadAction<FlashMessageType>
+      { payload: { message, autoHide, color = 'default' } }: PayloadAction<FlashMessageType>
     ) => {
       state.message = message;
       state.color = color;
+      if (typeof autoHide !== 'undefined') state.autoHide = autoHide;
     },
     //* removing the flash message
 

@@ -5,9 +5,8 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import { AnimatedImage, AnimatedImageProps } from '@/components';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch, useFlashMessage } from '@/hooks';
 import { add } from '@/redux/slices/cart';
-import { setFlashMessage } from '@/redux/slices/flash-message';
 
 export interface ProductCardProps extends CardProps {
   product: Omit<ProductType, 'metadata'> & { size: string; price: number };
@@ -28,6 +27,7 @@ const ProductCard: FC<ProductCardProps> = ({
   ...props
 }) => {
   const dispatcher = useAppDispatch();
+  const flashMessage = useFlashMessage();
 
   return (
     <Card
@@ -67,7 +67,11 @@ const ProductCard: FC<ProductCardProps> = ({
                   count: 1,
                 })
               );
-              dispatcher(setFlashMessage({ message: 'Added product to cart', color: 'secondary' }));
+              flashMessage.send({
+                message: 'Added product to cart',
+                autoHide: 2000,
+                color: 'secondary',
+              });
             }}
           >
             {actionText}

@@ -1,7 +1,10 @@
 import '@/styles/globals.css';
 import { Metadata } from 'next';
+import Link from 'next/link';
 import clsx from 'clsx';
 import { Inter } from 'next/font/google';
+
+import paths from '@/config/paths.json';
 
 const inter = Inter({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
@@ -44,6 +47,7 @@ const RootLayout = async ({ children }: LayoutProps) => {
             </div>
             <CartModal
               modalTitle={text.modals.cart.title}
+              submitProps={{ as: Link, href: paths.checkout }}
               submitTitle={text.modals.cart.submitTitle}
             />
             <ReduxFlashMessage />

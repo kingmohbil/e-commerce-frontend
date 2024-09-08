@@ -14,6 +14,7 @@ const ReduxFlashMessage: FC<ReduxFlashMessageProps> = ({}) => {
 
   return (
     <FlashMessage
+      autoHide={flashMessage.autoHide}
       color={flashMessage.color}
       open={!!flashMessage.message}
       onClose={() => dispatcher(endFlashMessage())}

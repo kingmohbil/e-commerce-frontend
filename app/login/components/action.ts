@@ -4,7 +4,8 @@ import { cookies } from 'next/headers';
 import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import { redirect } from 'next/navigation';
 
-import { request, formDataIntoObject } from '@/utils';
+import { formDataIntoObject } from '@/utils';
+import { request } from '@/utils/server';
 import { flattenError } from '@/validation/handlers/flattenErrors';
 import loginSchema from '@/validation/auth/loginSchema';
 

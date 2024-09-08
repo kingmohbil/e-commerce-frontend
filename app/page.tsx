@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { navbarWidth } from './layout';
 
-import { getSession, request } from '@/utils';
+import { getSession, request } from '@/utils/server';
 import { ProductCard, AnimateChildren } from '@/components';
 import text from '@/config/languages/en/text.json';
 

@@ -1,6 +1,12 @@
 export {};
 
 declare global {
+  interface BackendResponse {
+    message: string;
+  }
+
+  type PaymentMethods = 'cash';
+
   type IconSvgProps = React.ComponentProps<'svg'> & {
     size?: number;
   };
@@ -75,4 +81,13 @@ declare global {
     items: CartItem[];
     total: number;
   }
+
+  type ServerActionResponseType<T = any> = {
+    success: boolean;
+    data?: T;
+    errors?: FlattenError;
+    message?: string;
+  };
+
+  type ServerActionResponse<T = any> = Promise<ServerActionResponseType<T>>;
 }

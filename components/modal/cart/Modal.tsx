@@ -8,6 +8,7 @@ import {
   ModalFooter,
   Modal,
   Button,
+  ButtonProps,
 } from '@nextui-org/react';
 
 import Item from './Item';
@@ -19,9 +20,10 @@ export interface CartModalProps extends Omit<ModalProps, 'children' | 'onClose' 
   children?: React.ReactNode;
   modalTitle?: React.ReactNode | string;
   submitTitle?: React.ReactNode | string;
+  submitProps?: ButtonProps;
 }
 
-const CartModal: FC<CartModalProps> = ({ modalTitle, submitTitle, ...props }) => {
+const CartModal: FC<CartModalProps> = ({ modalTitle, submitTitle, submitProps, ...props }) => {
   const cart = useAppSelector((store) => store.cart);
   const dispatcher = useAppDispatch();
 
@@ -39,7 +41,12 @@ const CartModal: FC<CartModalProps> = ({ modalTitle, submitTitle, ...props }) =>
           ))}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onPress={onClose}>
+          <Button
+            color="primary"
+            isDisabled={cart.items.length === 0}
+            onPress={onClose}
+            {...submitProps}
+          >
             {submitTitle ?? 'Submit'}
           </Button>
         </ModalFooter>

@@ -2,7 +2,8 @@
 import { AxiosError } from 'axios';
 import { redirect } from 'next/navigation';
 
-import { request, formDataIntoObject } from '@/utils';
+import { formDataIntoObject } from '@/utils';
+import { request } from '@/utils/server';
 import { flattenError } from '@/validation/handlers/flattenErrors';
 import signupSchema from '@/validation/auth/signupSchema';
 
