@@ -13,10 +13,15 @@ export interface OrderItem {
   quantity: number;
 }
 
+export interface OrderItemType extends OrderItem {
+  name: string;
+  price: number;
+}
+
 export interface OrderType<T extends 'populated' | '' = ''> {
   _id: string;
   user: T extends 'populated' ? UserType : string;
-  items: (OrderItem & { name: string; price: number })[];
+  items: OrderItemType[];
   address: string;
   paymentMethod: PaymentMethod;
   status: OrderStatuses;
