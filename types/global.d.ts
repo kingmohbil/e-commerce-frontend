@@ -74,7 +74,7 @@ declare global {
     name: string;
     count: number;
     price: number;
-    size?: string;
+    size: string;
   }
 
   interface CartType {
@@ -90,4 +90,6 @@ declare global {
   };
 
   type ServerActionResponse<T = any> = Promise<ServerActionResponseType<T>>;
+
+  type UserRoles = 'admin' | 'user';
 }

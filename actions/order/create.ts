@@ -1,3 +1,4 @@
+'use server';
 import validation from '@/validation/order/create';
 import { CreateParams } from '@/types/order';
 import { flattenError } from '@/validation/handlers/flattenErrors';

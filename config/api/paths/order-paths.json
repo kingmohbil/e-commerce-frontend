@@ -1,3 +1,4 @@
 {
-  "create": "/order/token"
+  "create": "/order/token",
+  "getAll": "/order/token"
 }

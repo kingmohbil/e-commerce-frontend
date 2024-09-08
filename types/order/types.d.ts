@@ -1,3 +1,5 @@
+import { UserType } from '@/types/user';
+
 export type OrderStatuses =
   | 'processing'
   | 'processed'
@@ -11,9 +13,9 @@ export interface OrderItem {
   quantity: number;
 }
 
-export interface OrderType {
+export interface OrderType<T extends 'populated' | '' = ''> {
   _id: string;
-  user: string;
+  user: T extends 'populated' ? UserType : string;
   items: (OrderItem & { name: string; price: number })[];
   address: string;
   paymentMethod: PaymentMethod;
@@ -30,4 +32,11 @@ export interface CreateParams {
 
 export interface CreateResponse extends BackendResponse {
   order: OrderType;
+}
+
+export interface GetAllParams {}
+
+export interface GetAllResponse extends BackendResponse {
+  orders: OrderType<'populated'>[];
+  count: number;
 }

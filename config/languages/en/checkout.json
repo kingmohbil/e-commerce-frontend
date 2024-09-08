@@ -9,5 +9,8 @@
       "total": "total"
     }
   },
+  "addressLabel": "Address",
+  "addressPlaceholder": "new york 1234",
+  "submitButton": "Place an order",
   "emptyCart": "No products in your cart. Browse our selection and add items you love!"
 }

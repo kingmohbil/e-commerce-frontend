@@ -12,6 +12,16 @@ class Order {
       return Promise.reject(error);
     }
   }
+
+  async getAll(): Promise<Types.GetAllResponse> {
+    try {
+      const res = await request.get(paths.getAll);
+
+      return res.data;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }
 
 export * from '@/types/order';

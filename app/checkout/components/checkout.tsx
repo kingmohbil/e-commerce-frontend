@@ -1,14 +1,17 @@
 'use client';
 import React, { FC } from 'react';
 
+import SubmitHandler, { SubmitHandlerProps } from './submitHandler';
+
 import { useAppSelector } from '@/hooks';
 import { NoItemsInCart, NoItemsInCartProps } from '@/components';
 
 export interface CheckoutProps {
   emptyCartProps?: NoItemsInCartProps;
+  submitHandlerProps?: SubmitHandlerProps;
 }
 
-const Checkout: FC<CheckoutProps> = ({ emptyCartProps }) => {
+const Checkout: FC<CheckoutProps> = ({ emptyCartProps, submitHandlerProps }) => {
   const cart = useAppSelector((store) => store.cart);
 
   return cart.items.length > 0 ? (
@@ -18,6 +21,9 @@ const Checkout: FC<CheckoutProps> = ({ emptyCartProps }) => {
         {cart.items.map((item) => (
           <Product key={`${item.id}${item.size}`} {...item} />
         ))}
+      </div>
+      <div className="flex flex-col mt-16">
+        <SubmitHandler {...submitHandlerProps} />
       </div>
     </div>
   ) : (

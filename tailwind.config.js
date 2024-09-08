@@ -19,5 +19,17 @@ module.exports = {
   },
   darkMode: 'selector',
 
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            success: {
+              foreground: '#FFF',
+            },
+          },
+        },
+      },
+    }),
+  ],
 };
