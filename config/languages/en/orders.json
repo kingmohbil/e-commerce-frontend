@@ -1,0 +1,15 @@
+{
+  "page": {
+    "title": "your orders"
+  },
+  "card": {
+    "user": {
+      "title": "Order Details",
+      "nameTitle": "Name:",
+      "emailTitle": "Email:",
+      "phoneTitle": "Phone:",
+      "verified": "(Verified)",
+      "notVerified": "(Not Verified)"
+    }
+  }
+}

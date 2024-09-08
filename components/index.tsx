@@ -7,3 +7,4 @@ export * from './animation';
 export * from './modal';
 export * from './alert';
 export * from './placeholders';
+export * from './status';
