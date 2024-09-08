@@ -4,5 +4,6 @@
   "home": "/",
   "dashboard": "/dashboard",
   "settings": "/dashboard/settings",
-  "checkout": "/checkout"
+  "checkout": "/checkout",
+  "orders": "/orders"
 }

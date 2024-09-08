@@ -10,9 +10,11 @@ import { OrderType } from '@/types/order';
 
 export interface OrderCardProps extends CardProps {
   order: OrderType<'populated'>;
+  itemsHeading?: string;
+  totalHeading?: string;
 }
 
-const OrderCard: React.FC<OrderCardProps> = ({ order, ...props }) => {
+const OrderCard: React.FC<OrderCardProps> = ({ order, itemsHeading, totalHeading, ...props }) => {
   return (
     <Card className={clsx('border rounded shadow-sm max-w-[400px]', props?.className)}>
       <CardHeader className="flex justify-between">
@@ -25,7 +27,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, ...props }) => {
       <Divider />
       <CardBody>
         <div className="">
-          <h2 className="text-lg font-semibold pb-2">Order Items</h2>
+          <h2 className="text-lg font-semibold pb-2">{itemsHeading}</h2>
           <div className="flex flex-col pl-4">
             {order.items.map((item) => (
               <OrderItem
@@ -36,8 +38,8 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, ...props }) => {
           </div>
         </div>
         <p className="flex justify-end gap-1 items-center">
-          <strong className="text-sm font-medium">Total:</strong>{' '}
-          <span>${order.total.toFixed(2)}</span>
+          <strong className="text-medium font-semibold">{totalHeading}</strong>{' '}
+          <span className="text-sm font-normal">${order.total.toFixed(2)}</span>
         </p>
       </CardBody>
     </Card>

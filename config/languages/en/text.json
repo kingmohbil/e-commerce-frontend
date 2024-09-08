@@ -1,17 +1,13 @@
 {
   "nav": {
     "authLinks": {
-      "dashboard": "dashboard",
       "settings": "settings",
       "logout": "logout",
-      "cart": "cart"
+      "cart": "cart",
+      "orders": "orders"
     },
     "publicLinks": {
       "login": "login"
-    },
-    "dashboardLinks": {
-      "home": "home",
-      "store": "store"
     }
   },
   "common": {

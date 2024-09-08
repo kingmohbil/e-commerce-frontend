@@ -12,10 +12,10 @@ import {
 import {
   AiOutlineUser,
   AiOutlineSetting,
-  AiOutlineDashboard,
   AiOutlineLogout,
   AiOutlineShoppingCart,
 } from 'react-icons/ai';
+import { RiShoppingBag3Line } from 'react-icons/ri';
 import Link from 'next/link';
 
 import text from '@/config/languages/en/text.json';
@@ -39,14 +39,6 @@ const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props })
       </DropdownTrigger>
       <DropdownMenu className="capitalize">
         <DropdownItem
-          key="dashboard"
-          as={Link}
-          href={paths.dashboard}
-          startContent={<AiOutlineDashboard size="20px" />}
-        >
-          {text.nav.authLinks.dashboard}
-        </DropdownItem>
-        <DropdownItem
           key="settings"
           as={Link}
           href={paths.settings}
@@ -60,6 +52,15 @@ const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props })
           onPress={() => dispatcher(open())}
         >
           {text.nav.authLinks.cart}
+        </DropdownItem>
+        <DropdownItem
+          key="orders"
+          as={Link}
+          color="primary"
+          href={paths.orders}
+          startContent={<RiShoppingBag3Line size="20px" />}
+        >
+          {text.nav.authLinks.orders}
         </DropdownItem>
         <DropdownItem key="logout" color="danger" startContent={<AiOutlineLogout size="20px" />}>
           {text.nav.authLinks.logout}
