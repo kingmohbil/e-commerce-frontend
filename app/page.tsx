@@ -6,6 +6,7 @@ import { navbarWidth } from './layout';
 import { getSession, request } from '@/utils/server';
 import { ProductCard, AnimateChildren } from '@/components';
 import text from '@/config/languages/en/text.json';
+import common from '@/config/languages/en/common.json';
 
 const LoadProducts = async () => {
   const user = await getSession();
@@ -15,7 +16,7 @@ const LoadProducts = async () => {
   return data.products.map((product) => (
     <ProductCard
       key={product._id}
-      actionText={text.common.button.addToCart}
+      actionText={common.button.addToCart}
       cart={!!user}
       className="w-[500px]"
       product={{ ...product, size: product.metadata[0].size, price: product.metadata[0].price }}

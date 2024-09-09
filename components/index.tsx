@@ -8,3 +8,4 @@ export * from './modal';
 export * from './alert';
 export * from './placeholders';
 export * from './status';
+export * from './pagination';

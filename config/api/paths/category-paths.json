@@ -1,0 +1,4 @@
+{
+  "getAll": "/category",
+  "getProductsById": "/category/{{id}}/product"
+}

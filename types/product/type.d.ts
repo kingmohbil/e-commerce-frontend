@@ -12,7 +12,9 @@ export interface ProductType {
   active: boolean;
   createdAt: string;
   updatedAt: string;
-  metadata: MetaData[];
+  metadata: Metadata[];
   totalStock: number;
   imageURL: string;
+  totalStock: number;
+  defaultPrice: number;
 }

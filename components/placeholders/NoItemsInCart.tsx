@@ -12,7 +12,7 @@ const NoItemsInCart: FC<NoItemsInCartProps> = ({ className, text, textProps, ...
     <div className="flex flex-col gap-4 items-center">
       <BsCartX {...props} className={clsx('text-9xl', className)} />
       {text && (
-        <p {...textProps} className={clsx('text-sm opacity-95', textProps?.className)}>
+        <p {...textProps} className={clsx('text-sm text-default-500', textProps?.className)}>
           {text}
         </p>
       )}

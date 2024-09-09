@@ -9,21 +9,20 @@ import PublicUserMenu from './PublicUserMenu';
 
 import { AmazonLogo } from '@/components';
 import { siteConfig } from '@/config/site';
-import { request, getSession } from '@/utils/server';
+import { getSession } from '@/utils/server';
 import paths from '@/config/paths.json';
+import { Category } from '@/helpers';
 
 export interface LayoutNavbarProps extends NavbarProps {}
 
 const GetCategoriesMenu: any = async () => {
   try {
-    const { data } = await request.get<{ count: number; categories: CategoryType[] }>(
-      '/category?active=true'
-    );
+    const categories = await new Category().getAll();
 
     return (
       <CategoriesMenu
         backdrop="blur"
-        categories={data.categories}
+        categories={categories.categories}
         triggerComponent={
           <Button className="text-sm" variant="light">
             Categories

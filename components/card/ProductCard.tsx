@@ -9,7 +9,7 @@ import { useAppDispatch, useFlashMessage } from '@/hooks';
 import { add } from '@/redux/slices/cart';
 
 export interface ProductCardProps extends CardProps {
-  product: Omit<ProductType, 'metadata'> & { size: string; price: number };
+  product: Omit<ProductType, 'metadata' | 'categoryId'> & { size: string; price: number };
   imageProps?: Partial<AnimatedImageProps>;
   imageContainerProps?: ComponentProps<'div'>;
   cart?: boolean;

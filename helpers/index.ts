@@ -1,3 +1,4 @@
 import Order from './order';
+import Category from './category';
 
-export { Order };
+export { Order, Category };

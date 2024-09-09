@@ -8,6 +8,7 @@ import {
   DropdownProps,
 } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export interface CategoriesMenuProps extends Partial<DropdownProps> {
   categories: CategoryType[];
@@ -22,7 +23,12 @@ const CategoriesMenu: FC<CategoriesMenuProps> = ({ categories, triggerComponent,
       <DropdownTrigger>{triggerComponent || <></>}</DropdownTrigger>
       <DropdownMenu onAction={(key) => router.push(`/category/${key}/product`)}>
         {categories.map((category) => (
-          <DropdownItem key={category._id} className="capitalize">
+          <DropdownItem
+            key={category._id}
+            as={Link}
+            className="capitalize"
+            href={`/category/${category._id}`}
+          >
             {category.name}
           </DropdownItem>
         ))}
