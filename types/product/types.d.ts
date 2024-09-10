@@ -18,3 +18,14 @@ export interface ProductType {
   totalStock: number;
   defaultPrice: number;
 }
+
+export interface GetAllParams {
+  limit?: number | string;
+  page?: number | string;
+  name?: string;
+}
+
+export interface GetAllResponse {
+  count: number;
+  products: ProductType[];
+}

@@ -1,3 +1,5 @@
-import CartModal from './cart/Modal';
+import CartModal, { CartModalProps } from './cart/Modal';
+import ProductModal, { ProductModalProps } from './product/ProductModal';
 
-export { CartModal };
+export type { CartModalProps, ProductModalProps };
+export { CartModal, ProductModal };

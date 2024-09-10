@@ -6,12 +6,14 @@ import NavbarItems from './NavbarItems';
 import CategoriesMenu from './CategoriesMenu';
 import AuthUserMenu from './AuthUserMenu';
 import PublicUserMenu from './PublicUserMenu';
+import SearchModalButton from './SearchModalButton';
 
 import { AmazonLogo } from '@/components';
 import { siteConfig } from '@/config/site';
 import { getSession } from '@/utils/server';
 import paths from '@/config/paths.json';
 import { Category } from '@/helpers';
+import text from '@/config/languages/en/layout.json';
 
 export interface LayoutNavbarProps extends NavbarProps {}
 
@@ -25,7 +27,7 @@ const GetCategoriesMenu: any = async () => {
         categories={categories.categories}
         triggerComponent={
           <Button className="text-sm" variant="light">
-            Categories
+            {text.links.categories}
           </Button>
         }
       />
@@ -53,6 +55,7 @@ const LayoutNavbar = async ({}: LayoutNavbarProps) => {
 
       <NavbarContent justify="end">
         <ul className="flex gap-2 items-center">
+          <SearchModalButton />
           <NavbarItems />
           <GetCategoriesMenu />
         </ul>

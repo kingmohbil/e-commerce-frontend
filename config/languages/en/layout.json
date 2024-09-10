@@ -1,0 +1,9 @@
+{
+  "productsModal": {
+    "title": "Products",
+    "noProductsFound": "No products found"
+  },
+  "links": {
+    "categories": "Categories"
+  }
+}

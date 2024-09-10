@@ -30,26 +30,6 @@ declare global {
     };
   };
 
-  type Metadata = {
-    price: number;
-    size: string;
-    inStock: number;
-  };
-
-  type ProductType = {
-    _id: string;
-    categoryId: string;
-    name: string;
-    description: string;
-    active: boolean;
-    createdAt: string;
-    updatedAt: string;
-    metadata: Metadata[];
-    totalStock: number;
-    imageURL: string;
-    defaultPrice: number;
-  };
-
   type CategoryType = {
     _id: string;
     name: string;

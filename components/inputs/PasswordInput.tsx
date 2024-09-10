@@ -12,21 +12,19 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ ...props }) => {
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
-    <>
-      <Input
-        endContent={
-          <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
-            {isVisible ? (
-              <IoMdEyeOff className="text-2xl text-default-400 pointer-events-none" />
-            ) : (
-              <IoMdEye className="text-2xl text-default-400 pointer-events-none" />
-            )}
-          </button>
-        }
-        type={isVisible ? 'text' : 'password'}
-        {...props}
-      />
-    </>
+    <Input
+      endContent={
+        <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+          {isVisible ? (
+            <IoMdEyeOff className="text-2xl text-default-400 pointer-events-none" />
+          ) : (
+            <IoMdEye className="text-2xl text-default-400 pointer-events-none" />
+          )}
+        </button>
+      }
+      type={isVisible ? 'text' : 'password'}
+      {...props}
+    />
   );
 };
 
