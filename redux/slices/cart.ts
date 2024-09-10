@@ -5,6 +5,10 @@ interface CartModal extends CartType {
   open: boolean;
 }
 
+export type AddParams = CartItem;
+
+export type RemoveParams = { id: string; size?: string };
+
 const initialState: CartModal = {
   open: false,
   items: [],
@@ -23,7 +27,7 @@ const cart = createSlice({
       state.open = false;
     },
 
-    add: (state, { payload }: PayloadAction<CartItem>) => {
+    add: (state, { payload }: PayloadAction<AddParams>) => {
       // searching for the existence of the product
       const index = state.items.findIndex(
         (product) => product.id === payload.id && product.size === payload.size
@@ -41,7 +45,7 @@ const cart = createSlice({
       }
     },
 
-    remove: (state, { payload }: PayloadAction<{ id: string; size?: string }>) => {
+    remove: (state, { payload }: PayloadAction<RemoveParams>) => {
       const index = state.items.findIndex(
         (item) => item.id === payload.id && payload.size === item.size
       );
