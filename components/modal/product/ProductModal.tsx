@@ -14,18 +14,20 @@ import clsx from 'clsx';
 import { CiSearch as SearchIcon } from 'react-icons/ci';
 
 import { ProductType } from '@/types/product';
-import ProductsSearch from '@/components/inputs/ProductsSearch';
+import ProductsSearch, { ProductsSearchProps } from '@/components/inputs/ProductsSearch';
 
 export interface ProductModalProps extends Omit<ModalProps, 'children'> {
   buttonItemProps?: ButtonProps;
   title?: string;
   noProductsFoundText?: string;
+  productsSearchProps?: Partial<ProductsSearchProps>;
 }
 
 const ProductModal: FC<ProductModalProps> = ({
   buttonItemProps,
   title,
   noProductsFoundText,
+  productsSearchProps,
   ...props
 }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -41,6 +43,7 @@ const ProductModal: FC<ProductModalProps> = ({
               startContent={<SearchIcon />}
               onProductsChange={(data) => setProducts(data.products)}
               onProductsChangeFail={() => setProducts([])}
+              {...productsSearchProps}
             />
             {products.length === 0 && <p className="text-center">{noProductsFoundText}</p>}
             {products.map((product) => (

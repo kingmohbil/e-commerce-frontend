@@ -16,6 +16,7 @@ const ProductsModal: FC<ProductsModalProps> = ({}) => {
     <ProductModal
       isOpen={modal.isOpen && modal.modalId === productsModalId}
       noProductsFoundText={text.productsModal.noProductsFound}
+      productsSearchProps={{ placeholder: text.productsModal.searchPlaceHolder }}
       title={text.productsModal.title}
       onClose={modal.close}
     />

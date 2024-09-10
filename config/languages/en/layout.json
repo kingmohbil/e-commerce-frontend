@@ -1,7 +1,8 @@
 {
   "productsModal": {
     "title": "Products",
-    "noProductsFound": "No products found"
+    "noProductsFound": "No products found",
+    "searchPlaceHolder": "iphone 15 pro max"
   },
   "links": {
     "categories": "Categories"
