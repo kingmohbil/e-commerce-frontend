@@ -1,7 +1,6 @@
 {
   "nav": {
     "authLinks": {
-      "settings": "settings",
       "logout": "logout",
       "cart": "cart",
       "orders": "orders"

@@ -44,11 +44,11 @@ const LayoutNavbar = async ({}: LayoutNavbarProps) => {
     <Navbar
       isBordered
       className="bg-white dark:bg-black justify-between"
-      classNames={{ wrapper: 'min-w-full' }}
+      classNames={{ wrapper: 'min-w-full max-w-full' }}
     >
       <NavbarBrand className="gap-2">
         <AmazonLogo className="fill-black dark:fill-white" />
-        <Link className="text-xl font-semibold capitalize" href={paths.home}>
+        <Link className="text-xl font-semibold capitalize hidden sm:flex" href={paths.home}>
           {siteConfig.name}
         </Link>
       </NavbarBrand>

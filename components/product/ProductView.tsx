@@ -38,7 +38,12 @@ const ProductView: FC<ProductViewProps> = ({
   const [selectedSize, setSelectedSize] = useState(product.metadata[0]);
 
   return (
-    <div className={cn('rounded-lg w-full shadow-sm bg-white p-8 flex gap-14', className)}>
+    <div
+      className={cn(
+        'rounded-lg flex-col w-full shadow-sm bg-white p-8 flex gap-14 lg:flex-row mb-4',
+        className
+      )}
+    >
       <Image alt={product.name} height={550} src={product.imageURL} width={735} {...imageProps} />
       <div className="flex flex-col gap-4">
         <ProductTag name={product.name} price={selectedSize.price} {...productTagProps} />

@@ -8,19 +8,15 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
+  Badge,
 } from '@nextui-org/react';
-import {
-  AiOutlineUser,
-  AiOutlineSetting,
-  AiOutlineLogout,
-  AiOutlineShoppingCart,
-} from 'react-icons/ai';
+import { AiOutlineUser, AiOutlineLogout, AiOutlineShoppingCart } from 'react-icons/ai';
 import { RiShoppingBag3Line } from 'react-icons/ri';
 import Link from 'next/link';
 
 import text from '@/config/languages/en/text.json';
 import paths from '@/config/paths.json';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch, useCart } from '@/hooks';
 import { open } from '@/redux/slices/cart';
 
 interface AuthUserMenuProps extends Partial<DropdownProps> {
@@ -29,6 +25,8 @@ interface AuthUserMenuProps extends Partial<DropdownProps> {
 
 const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props }) => {
   const dispatcher = useAppDispatch();
+
+  const cart = useCart();
 
   return (
     <Dropdown backdrop="blur" {...props}>
@@ -39,16 +37,12 @@ const AuthUserMenu: FC<AuthUserMenuProps> = ({ dropdownTriggerProps, ...props })
       </DropdownTrigger>
       <DropdownMenu className="capitalize">
         <DropdownItem
-          key="settings"
-          as={Link}
-          href={paths.settings}
-          startContent={<AiOutlineSetting size="20px" />}
-        >
-          {text.nav.authLinks.settings}
-        </DropdownItem>
-        <DropdownItem
           key="cart"
-          startContent={<AiOutlineShoppingCart size="20px" />}
+          startContent={
+            <Badge color="secondary" content={cart.cart.items.length} size="sm">
+              <AiOutlineShoppingCart size="20px" />
+            </Badge>
+          }
           onPress={() => dispatcher(open())}
         >
           {text.nav.authLinks.cart}

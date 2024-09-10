@@ -1,3 +1,4 @@
 {
-  "getAll": "/product"
+  "getAll": "/product",
+  "getById": "/product/{{id}}"
 }

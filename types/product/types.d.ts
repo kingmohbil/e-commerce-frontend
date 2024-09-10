@@ -29,3 +29,7 @@ export interface GetAllResponse {
   count: number;
   products: ProductType[];
 }
+
+export interface GetByIdResponse {
+  product: ProductType;
+}
