@@ -7,6 +7,7 @@ import { getSession, request } from '@/utils/server';
 import { ProductCard, AnimateChildren } from '@/components';
 import text from '@/config/languages/en/text.json';
 import common from '@/config/languages/en/common.json';
+import { ProductType } from '@/types/product';
 
 const LoadProducts = async () => {
   const user = await getSession();

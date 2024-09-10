@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { AnimatedImage, AnimatedImageProps } from '@/components';
 import { useAppDispatch, useFlashMessage } from '@/hooks';
 import { add } from '@/redux/slices/cart';
+import { ProductType } from '@/types/product';
 
 export interface ProductCardProps extends CardProps {
   product: Omit<ProductType, 'metadata' | 'categoryId'> & { size: string; price: number };
